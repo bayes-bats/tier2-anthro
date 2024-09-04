@@ -1,0 +1,55 @@
+---
+title: "Tier 2 Work Plan"
+author: "Christopher Wolfe"
+date: "`r Sys.time()`"
+date-format: "DD MMMM, YYYY"
+format: html
+editor: visual
+engine: knitr
+---
+```{r include=FALSE}
+renderthis::to_pdf("wolfe_work_plan.html")
+```
+
+
+This document defines the work plan for Tier 2 of the Bayes BATS program. Here I describe the rationale of the proposed project, contextualize the work in a broader pedagogical framework, and detail a timeline of proposed work and meeting times between myself and the PIs.
+
+## Pedagogical Framing
+During the Spring 2025 semester (January-May), I will be teaching a course in 'statistics' in the Department of Anthropology at East Carolina University. This course will be taught at the 5000 level. It will be taught to upper level undergraduate students and masters students. No previous statistical knowledge will be required for the course. In fact, I am leading with the prevailing assumption that this course may be the first introduction to data analysis and data scientific methods to many of the students who take this class.
+
+I view this course in the following manner:
+
+* An introduction to research design, philosophy of science, statistical methods, and scholarly communication. It will focus (sometimes) on physical and biological anthropology, including archaeology, but maintains a broad perspective on research in general. 
+* This course may differ from most introductory statistics courses by emphasizing measurement
+and design before statistics.
+
+## Rationale
+Students will likely come to this class with some preconceived notion of what data analysis may or may not be. It is likely this will be grounded in some false knowledge of probability, data collection, and decision-making in the scientific process. Therefore, at the very onset of the semester I want to lay the foundation for the remainder of the semester:  
+
+**Scientific (and anthropological) research is dependent upon the data, the evidence, our preconceived notions about the data AND evidence, and how our scientific questions are formulated around this series of assumptions.**
+
+In a nutshell, the goal of the course is **not** to teach proficiency in coding or certain statistical methods, but instead to give students the tools necessary to formulate research questions, collect the requisite data, and determine the next steps appropriately. 
+
+## Purpose of Tier 2 Project
+This project will design and implement a modified version of the Monty Hall Problem as a means to introduce probability and scientific decision-making, more broadly. Perhaps the most important of this setup is this work allows for a more formal introduction of both Bayes Theorem, conditional probability, and Bayesian updating, later in the semester - all important components of observational anthropological sciences. 
+
+I am proposing a **week-long** series of lectures and activities to introduce probability, scientific decision-making, and statistical epistemology. This will be given the 1st week of class and serve as a signpost for the remainder of the semester. 
+
+## Proposed Student Artifacts
+This table illustrates the artifact or classroom object I will provide, a description of the object, the goal or research question associated with this artifact, and the modality of delivery.
+
+| Artifact | Description | Goal / Question | Modality |  |
+|---|---|---|---|---|
+| Problem Statement | Set-up of Monty Hall Problem in anthropological parlance | What drives anthropological question formation? | Document + Lecture |  |
+| PGM / DAG | Thinking back to McElreath's counting example, let's draw out all   possibilities on the board | What are all possible examples that drive this problem? | Lecture + Activity |  |
+| Background Lecture | Describe data analysis, evidence, types of questions, etc.  | Why should we care about our decision-making process? | Lecture |  |
+| Hands-on activity | Design a hands on activity to physically demonstrate the decision-making   underlying the Monty Hall problem | What types of anthropological problems can be addressed with basic   probability rules? | Classroom activity |  |
+| Lecture and Discussion | Hold a classroom discussion about the Monty Hall problem, the correct   answer, why we think the wrong answer, and what this means for   anthropological research | What does this mean for the remainder of the semester and how we think   about stats? | Discussion |  |
+
+## Proposed Timeline (Abbreviated)
+Here I propose an abbreviated timeline for the next few months. I am still thinking through the *exact* medium and/or anthropological example that I want to use for the abbreviated Monty Hall example. This exercise will require no data generation, no coding, and no external teaching resources. All I will ask is this students bring curiosity, questions, and a willing to accept the counterfactuality of the Monty Hall problem. 
+
+![](wolfe_timeline.png)
+
+## Meeting Times
+The proposed timeline does not currently showcase meeting times for the activity-creating team, nor does it show other meetings that will occur (such as office hours and mentor meetings). I envision recurring meetings with my mentor (Mine) and the other Bayes BATS PI's as time allows to continue to refine the project. 
