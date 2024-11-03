@@ -1,0 +1,27 @@
+---
+title: "Progress Report #2"
+author: "C Wolfe"
+format: html
+theme: superhero
+---
+
+## Recap
+The last check-in focused on narrowing down the activity to a more anthropological audience. The main task over the last month was to explore possible questions that may interest anthropologists, design an activity based on these questions, and formulate a possible assignment / worksheet.  
+
+## Completed Task
+-   Draft shiny application (app.R)  
+-   Draft worksheet (worksheet.qmd)
+    -   Included in this worksheet is the rationale for the assignment.
+
+## Outstanding Items
+-   A lecture / presentation to go along with the activity.
+    - I have questions to address with my mentor regarding the best approach for this material.
+-   I *think* I want a follow-up activity to expand upon this intial introduction. For instance, what if the students realize this "binary" approach, is less than ideal. Should I expand?
+-   I would also like to juxtapose this series of steps as compared to a frequentist approach.
+-   Presentation to be delivered in December
+
+## Questions to the Mentor
+-   What could be the best approach for an adjoining lecture? Particularly to a crowd averse to mathematical or statistical equations?
+-   Should I expand the shiny application to encompass a more "complex" multi-parameter example?
+-   Is it valuable to compare against possible frequentist approaches?
+-   What is necessary to be included in the presentation?
