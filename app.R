@@ -1,65 +1,66 @@
 library(shiny)
 library(bayesrules)
-library(ggplot2)
-library(shinythemes)
 
 ui <- fluidPage(
-  theme = shinytheme("darkly"),
-  titlePanel("Introduction to Bayesian Inference"),
+  titlePanel("Fun with Bayes"),
+  
   sidebarLayout(
     sidebarPanel(
-      tabsetPanel(
-        # First Panel: Set Prior Probability
-        tabPanel("Set Prior",
-                 h3("Select Question and Prior Beliefs"),
-                 selectInput("initial_question", "Choose a Question:",
-                             choices = list(
-                               "Is the mandibular torus present or absent?" = "mandibular_torus",
-                               "Does the archaeological site have colonial artifacts?" = "colonial_artifacts",
-                               "Is English the primary language spoken at your home?" = "english_language",
-                               "Are you a member of a fraternity or sorority on campus?" = "fraternity_membership"
-                             )),
-                 actionButton("submit_question", "Submit Question"),
-                 
-                 # Confidence question shown based on initial question
-                 uiOutput("confidence_ui")
-        ),
-        
-        # Second Panel: Enter Sample Data to Update Posterior
-        tabPanel("Update with Data",
-                 h3("Enter Observed Data"),
-                 numericInput("sample_size", "Total Sample Size:", min = 1, value = 10),
-                 numericInput("number_present", "Number Present:", min = 0, value = 3),
-                 actionButton("submit_data", "Submit Data")
-        ),
-        
-        # Third Panel: Adjust Prior Parameters
-        tabPanel("Custom Prior",
-                 h3("Different Prior Beliefs"),
-                 sliderInput("custom_alpha", "Alpha:", min = 1, max = 20, value = 5, step = 0.5),
-                 sliderInput("custom_beta", "Beta:", min = 1, max = 20, value = 5, step = 0.5),
-                 actionButton("apply_custom_prior", "Apply Different Prior")
-        )
+      tabsetPanel(id = "tab_selected",
+                  
+                  # First Panel: Set Prior Probability
+                  tabPanel("Set Prior",
+                           h3("Select Question and Adjust Prior"),
+                           selectInput("initial_question", "Choose a Question:",
+                                       choices = list(
+                                         "Is the mandibular torus present or absent?" = "mandibular_torus",
+                                         "Does the archaeological site have colonial artifacts?" = "colonial_artifacts",
+                                         "Is English the primary language spoken at your home?" = "english_language",
+                                         "Are you a member of a fraternity or sorority on campus?" = "fraternity_membership"
+                                       )),
+                           actionButton("submit_question", "Submit Question"),
+                           
+                           # Sliders for custom prior parameters
+                           h4("Adjust Prior Parameters"),
+                           sliderInput("custom_alpha", "Alpha:", min = 1, max = 20, value = 5, step = 0.5),
+                           sliderInput("custom_beta", "Beta:", min = 1, max = 20, value = 5, step = 0.5)
+                  ),
+                  
+                  # Second Panel: Enter Sample Data to Update Posterior
+                  tabPanel("Update with Data",
+                           h3("Enter Observed Data"),
+                           numericInput("sample_size", "Number of Observations (n):", min = 1, value = 10),
+                           numericInput("number_present", "Number of Positive Outcomes (y):", min = 0, value = 3),
+                           actionButton("submit_data", "Submit Data")
+                  ),
+                  
+                  # Third Panel: Explore Large Sample Sizes
+                  tabPanel("Explore Large Sample Sizes",
+                           h3("Simulate Large Sample Sizes"),
+                           sliderInput("large_sample_size", "Sample Size (n):", min = 10, max = 1000, value = 100, step = 10),
+                           numericInput("proportion_positive", "Proportion of Positive Outcomes (y/n):", min = 0, max = 1, value = 0.5, step = 0.01),
+                           actionButton("simulate_large_sample", "Simulate")
+                  )
       )
     ),
     
     mainPanel(
       # Display prior plot in the first panel
       conditionalPanel(
-        condition = "input.submit_question > 0 && input.submit_data == 0",
+        condition = "input.tab_selected == 'Set Prior' && input.submit_question > 0",
         plotOutput("prior_plot")
       ),
       
       # Display the posterior plot in the second panel
       conditionalPanel(
-        condition = "input.submit_data > 0",
+        condition = "input.tab_selected == 'Update with Data' && input.submit_data > 0",
         plotOutput("posterior_plot")
       ),
       
-      # Display custom prior and posterior plot in the third panel
+      # Display the large sample size plot in the third panel
       conditionalPanel(
-        condition = "input.apply_custom_prior > 0",
-        plotOutput("custom_prior_posterior_plot")
+        condition = "input.tab_selected == 'Explore Large Sample Sizes' && input.simulate_large_sample > 0",
+        plotOutput("large_sample_plot")
       )
     )
   )
@@ -67,29 +68,21 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   
-  # Reactive to store prior parameters based on initial question and confidence
-  prior_params <- reactiveVal(NULL)
-  
-  # Show confidence question after the initial question is submitted
-  observeEvent(input$submit_question, {
-    output$confidence_ui <- renderUI({
-      req(input$initial_question)  # Ensure a question is selected
-      selectInput("confidence_level", 
-                  label = paste("How confident are you in your answer to:", input$initial_question), 
-                  choices = c("Unsure" = "unsure", "Very Confident" = "very_confident", "Not Very Confident" = "not_confident"))
-    })
+  # Reactive to store prior parameters based on the sliders
+  prior_params <- reactive({
+    list(alpha = input$custom_alpha, beta = input$custom_beta)
   })
   
-  # Set prior parameters based on confidence level
-  observeEvent(input$confidence_level, {
-    req(input$confidence_level)
-    
-    params <- switch(input$confidence_level,
-                     "very_confident" = list(alpha = 7, beta = 2),
-                     "not_confident" = list(alpha = 2, beta = 7),
-                     "unsure" = list(alpha = 1, beta = 1))
-    
-    prior_params(params)  # Save prior params in reactive value
+  # Reset inputs when switching between tabs
+  observeEvent(input$tab_selected, {
+    if (input$tab_selected == "Update with Data") {
+      updateNumericInput(session, "sample_size", value = 10)
+      updateNumericInput(session, "number_present", value = 3)
+    }
+    if (input$tab_selected == "Explore Large Sample Sizes") {
+      updateSliderInput(session, "large_sample_size", value = 1000)
+      updateNumericInput(session, "proportion_positive", value = 0.5)
+    }
   })
   
   # Render the prior distribution plot
@@ -97,40 +90,35 @@ server <- function(input, output, session) {
     req(prior_params())  # Ensure prior parameters are set
     
     plot_beta_binomial(alpha = prior_params()$alpha, beta = prior_params()$beta) +
-      xlab("Probability of Success")
+      xlab("Probability") + theme_minimal()
   })
   
   # Render the posterior distribution plot after observed data is entered
   output$posterior_plot <- renderPlot({
-    req(prior_params())  # Ensure prior parameters are set
-    req(input$sample_size, input$number_present)  # Ensure observed data is entered
+    req(prior_params())
+    req(input$sample_size, input$number_present)
     
-    # Total sample size (n) and number present (y)
     n <- input$sample_size
     y <- input$number_present
     
     plot_beta_binomial(alpha = prior_params()$alpha, beta = prior_params()$beta, n = n, y = y) +
-      xlab("Probability of Success") + ggtitle("Updated Beliefs")
-
+      xlab("Probability") + theme_minimal()
   })
   
-  # Render the plot with custom prior and posterior
-  output$custom_prior_posterior_plot <- renderPlot({
-    req(input$custom_alpha, input$custom_beta, input$sample_size, input$number_present)
+  # Render the large sample size exploration plot
+  output$large_sample_plot <- renderPlot({
+    req(prior_params())
+    req(input$large_sample_size, input$proportion_positive)
     
-    # Custom prior parameters from sliders
-    alpha_prior <- input$custom_alpha
-    beta_prior <- input$custom_beta
+    n_large <- input$large_sample_size
+    y_large <- round(input$proportion_positive * n_large)
     
-    # Observed data
-    n <- input$sample_size
-    y <- input$number_present
+    alpha_large <- prior_params()$alpha 
+    beta_large <- prior_params()$beta 
     
-    # Calculate posterior parameters using custom prior and observed data
-    
-    # Display the custom prior and posterior distributions
-    plot_beta_binomial(alpha = alpha_prior, beta = beta_prior, n = n, y = y) +
-      xlab("Probability of Success") + ggtitle("Different Prior")
+    plot_beta_binomial(alpha = alpha_large, beta = beta_large, n = n_large, y = y_large) +
+      ggtitle(paste("Posterior with Large Sample Size\nn =", n_large, "| y =", y_large)) +
+      xlab("Probability") + theme_minimal()
   })
 }
 
