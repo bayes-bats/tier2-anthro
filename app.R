@@ -1,5 +1,6 @@
 library(shiny)
 library(bayesrules)
+library(tidyverse)
 
 ui <- fluidPage(
   titlePanel("Fun with Bayes"),
@@ -68,9 +69,22 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   
+  # Mapping of questions to x-axis labels
+  question_labels <- list(
+    mandibular_torus = "Probability the Mandibular Torus is Present",
+    colonial_artifacts = "Probability their are Colonial Artifacts in the Sample",
+    english_language = "Probability that English is the Primary Language",
+    fraternity_membership = "Probability an individual is part of Greek Life"
+  )
+  
   # Reactive to store prior parameters based on the sliders
   prior_params <- reactive({
     list(alpha = input$custom_alpha, beta = input$custom_beta)
+  })
+  
+  # Reactive to retrieve the x-axis label based on the selected question
+  x_axis_label <- reactive({
+    question_labels[[input$initial_question]]
   })
   
   # Reset inputs when switching between tabs
@@ -90,7 +104,7 @@ server <- function(input, output, session) {
     req(prior_params())  # Ensure prior parameters are set
     
     plot_beta_binomial(alpha = prior_params()$alpha, beta = prior_params()$beta) +
-      xlab("Probability") + theme_minimal()
+      xlab(x_axis_label()) + theme_minimal()
   })
   
   # Render the posterior distribution plot after observed data is entered
@@ -102,7 +116,7 @@ server <- function(input, output, session) {
     y <- input$number_present
     
     plot_beta_binomial(alpha = prior_params()$alpha, beta = prior_params()$beta, n = n, y = y) +
-      xlab("Probability") + theme_minimal()
+      xlab(x_axis_label()) + theme_minimal()
   })
   
   # Render the large sample size exploration plot
@@ -118,8 +132,9 @@ server <- function(input, output, session) {
     
     plot_beta_binomial(alpha = alpha_large, beta = beta_large, n = n_large, y = y_large) +
       ggtitle(paste("Posterior with Large Sample Size\nn =", n_large, "| y =", y_large)) +
-      xlab("Probability") + theme_minimal()
+      xlab(x_axis_label()) + theme_minimal()
   })
 }
+
 
 shinyApp(ui, server)
