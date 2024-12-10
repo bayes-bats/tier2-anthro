@@ -1,0 +1,56 @@
+---
+title: "Instructor File"
+format: html
+theme: journal
+---
+
+## Overview
+
+The following document outlines a lesson plan for an activity entitled [*Introduction to Statistical Storytelling*]{.underline}. This activity has three primary learning objectives:\
+\
+1. To reinforce data collection techniques\
+2. To demonstrate the role of prior beliefs in anthropological sciences (or observational) studies more broadly\
+3. To examine the role of data and sample size as it relates to one's prior beliefs.
+
+## Premise
+
+This activity is about **Telling Stories with Data**. This work will make up a 1-week module in an Introduction to Data Science class offered to upper-level undergraduate and MA students in Anthropology (or adjacent). This course differs from most introductory statistics courses by emphasizing measurement and design before statistics. Students will walk away with the tools necessary to formulate a research question, collect data, and provide interpretable results.\
+\
+This course will introduce the Bayesian approach to inference as a more appropriate form of analysis in observational sciences like anthropology. While frequentist methods will be discussed, the course is designed to drive home the utility of Bayesian thinking in anthropology. This activity will be the introduction to the second half of the semester where we connect data to real world application. Importantly, this activity is best completed after the instructor has introduced data collection, sampling techniques, and basic probability.
+
+## Lesson Plan
+
+*In Spring 2025, the associated course will be taught M,W,F. For ease, I designed this iteration to be completed in a single week. This can be modified for future use.*
+
+### Day 1: Introduction to the Activity 
+**Step 1: Review** Review data collection, sampling strategies, exploratory data analysis, etc. (*Course design ongoing*)\
+\
+**Step 2: Introduce Questions** Students grasp material more fully and are more invested in the topic when they feel as though they have a stake in the work. This directly translates to the first tangible **outcome** of this work: data collection. Anthropology is a diverse field. As a result I introduce **4** questions - 1 per subdiscipline. Each question is purposefully made binary (yes/no, 0/1). Students can address questions in either of ECU's lab spaces or perform small interviews around campus. **The questions can be modified based on the makeup of the classroom**.\
+\
+The questions are:  
+1. Biological Anthropology - Is the mandibular torus present or absent?  
+2. Archaeology - Does the archaeological site have colonial artifacts, yes or no?  
+3. Linguistic Anthropology - Is English the primary language spoken at your home, yes or no?  
+4. Cultural Anthropology - Are you a member of a fraternity or sorority on campus, yes or no?  
+\
+Students should be given the remainder of the week (until Friday's class) to collect data.\
+\
+**Step 3: Lecture** This activity serves as an inflection point in your semester. To this point, students will have learned what data are, but may have minimal knowledge about how to connect data to inference. This course will primarily demonstrate how Bayesian inference is the most appropriate to the types of "storytelling" present in anthropological contexts. That said, concepts will be kept broad (i.e., parameters control shape and spread of distributions), with mathematical equations only when necessary.\
+\
+This is the section that is *incomplete*. Why? Because this lecture will be designed based on the pace of the course and what the students may or may not already know. The goal in the first part of this lecture is to introduce probability, introduce parametric modeling, and begin discussion of Bayesian inference.
+
+### Day 2: Introduction to Bayesian Inference
+
+This is a continuation of the lecture from Day 1. Here Bayes Theorem should be introduced. Concepts like Prior Probability, Posterior Probability, and Likelihood should also be introduced. By the end of Day 2 students should be prepared to begin data analysis.\
+
+Here, the students will also first open the provided Shiny application. They will select their question and select the parameters of their prior distribution. They will use the provided worksheet to reflect upon these selections.
+
+### Day 3: Activity Completion and Reflection
+
+This is the climax of the week. Students will open the provided Shiny application, select the question they have chosen, keep the same prior chosen before data collection, enter the total number of data points and number of yes or positive scores (1). This will animate a plot showing the prior, likelihood, and the posterior. Students will address reflections on a worksheet.\
+\
+A secondary component to the application is the ability to manipulate sample size and proportion of positive outcomes. This is meant to demonstrate how larger samples *may* swamp *bad* priors. I.E. Even if we know nothing in our system (i.e., flat or vague priors), the more data we collect, the more certain we can be of our estimands.
+
+## Future Focused
+
+This activity is meant to be a straightforward introduction to Bayesian inference. That is assuming we have some prior knowledge of the system in question, we can collect data and draw some sort of inference about the world. In this case, the probability of some event occuring (given the question(s) above). The remainder of the semester will demonstrate iterations of this approach but adding layers of complexity. First, we pull back the hood and describe the beta-binomial model here, then perhaps a normal-normal, regression, etc. Much of this will depend on the pace of the course, but each topic will have a Bayesian spin with associated code and application. 

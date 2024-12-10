@@ -1,0 +1,61 @@
+---
+title: "Introduction to Statistical Storytelling"
+format: html
+theme: journal
+---
+
+## Motivation
+
+We are all **experts** in sampling techniques, data collection procedures, and data exploration and visualization. Now we turn towards the main purpose of this course - ***to tell stories with data***. In this activity, we will learn how to combine our prior beliefs about some research questions with the data we collect to address the research question. By the end, you will each have the tools to share some knowledge about the world given our prior beliefs and knowledge.
+
+## Instructions
+
+### Who Are You?
+
+You are to work **independently** or in groups of **two**.
+
+Name(s):
+
+### Choose a Question
+
+Anthropology is a diverse field. For this reason, you will each choose 1 of 4 questions that is interesting to you.
+
+***Circle the question that interests you most!***
+
+1.  Biological Anthropology - Is the mandibular torus present or absent?
+2.  Archaeology - Does the archaeological site have colonial artifacts, yes or no?
+3.  Linguistic Anthropology - Is English the primary language spoken at your home, yes or no?
+4.  Cultural Anthropology - Are you a member of a fraternity or sorority on campus, yes or no?
+
+### Data Collection
+
+Based on your choice above, you are to spend the rest of the week collecting data that addresses your question above. This is to be done in the BioAnth Lab (Q1), the Archaeology Lab (Q2), or via short interviews on campus (Q3 and Q4).
+
+Address all parts below.
+
+## Prior Beliefs
+**To be completed prior to data collection!**
+
+What question did you choose? Why? <br><br><br><br><br><br> What initial or prior beliefs do you have? Do you think there will be more or less mandibular tori? Will there be colonial artifacts? Will english be the language spoken at home? Or, will an individual be in a fraternity or sorority?
+
+Quantify your prior beliefs on the Shiny application.\
+\
+Why did you choose these parameters? What background knowledge went into your decision?\
+    <br><br> Why? What assumptions leads you to this choice? <br><br><br><br><br><br>
+
+## Data Collection
+
+Before data collection: What strategies will you use to collect your data?\
+<br><br><br><br><br><br> After data collection: How did you collect your data? <br><br><br><br><br><br>
+
+## Combining Prior Knowledge and Data
+
+Using the data you collected, I want you to go back to the application and enter the total sample size (number of individuals or artifacts) and the total number of successes or the instance where *yes* was answered to the question.\
+<br><br><br> Describe the plot you see. How does the prior compare the likelihood? What about the posterior? Do these results make sense to you? Why or why not? <br><br><br><br><br><br> What would make you more confident in your beliefs?
+
+## Increasing Sample Sizes 
+
+On the final panel of the application you can manually adjust the sample size and proportion of positive outcomes. <br><br><br> What do you notice if you change the sample size? The proportion of positive outcomes? How does it affect the likelihood and the posterior? What can you surmise about the relationship between sample size and prior beliefs?<br><br><br>
+
+## Reflection
+This final section is open-ended. Reflect upon the week's activity and lecture. Can you envision your own research question(s) and the prior beliefs you may hold about each? How can we address your questions given what we have learned this week? What would you like from the remainder of the semester?<br><br><br>
