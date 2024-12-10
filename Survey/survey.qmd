@@ -1,0 +1,232 @@
+---
+format: html
+echo: false
+warning: false
+theme:
+  dark: Superhero
+---
+
+```{r}
+library(surveydown)
+```
+
+::: {#page1 .sd-page}
+
+# Welcome to ANTH5203!
+
+Before the semester begins, I want to get an idea of how comfortable we are with various topical areas in quantitative methods. Please address each question accordingly. You must address all questions. 
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'grade',
+  label = "What characterizes your status at ECU?",
+  option = c(
+    'Undergraduate Student' = 'ug',
+    'Graduate Student' = 'g'
+  )
+)
+```
+
+```{r}
+sd_next()
+```
+
+:::
+
+::: {#page2 .sd-page}
+```{r}
+sd_question(
+  type  = 'numeric',
+  id    = 'class',
+  label = "How many formal classes have you taken in mathematics, statistics, quantitative reasoning, data science, computer science, or related fields? Think back to high school, undergraduate, and/or your graduate coursework."
+)
+```
+
+```{r}
+sd_question(
+  type  = 'textarea',
+  id    = 'class_list',
+  label = "List the Course Names or Topics. If '0', then put NA."
+)
+```
+
+```{r}
+sd_next()
+```
+:::
+
+::: {#page3 .sd-page}
+For each question, I want you to select how familiar you are within a given topic(s).\
+\
+1 = Least Familiar and 10 = Most Familiar.
+
+```{r}
+sd_question(
+  type  = 'slider',
+  id    = 'eda',
+  label = "Exploratory Data Analysis",
+  option = c(
+    '1' = '1',
+    '2' = '2',
+    '3' = '3',
+    '4' = '4',
+    '5' = '5',
+    '6' = '6',
+    '7' = '7',
+    '8' = '8',
+    '9' = '9',
+    '10' = '10'
+  )
+)
+```
+
+```{r}
+sd_question(
+  type  = 'slider',
+  id    = 'probability',
+  label = "Probability Theory",
+  option = c(
+    '1' = '1',
+    '2' = '2',
+    '3' = '3',
+    '4' = '4',
+    '5' = '5',
+    '6' = '6',
+    '7' = '7',
+    '8' = '8',
+    '9' = '9',
+    '10' = '10'
+  )
+)
+```
+
+```{r}
+sd_question(
+  type  = 'slider',
+  id    = 'nht',
+  label = "Hypothesis Testing",
+  option = c(
+    '1' = '1',
+    '2' = '2',
+    '3' = '3',
+    '4' = '4',
+    '5' = '5',
+    '6' = '6',
+    '7' = '7',
+    '8' = '8',
+    '9' = '9',
+    '10' = '10'
+  )
+)
+```
+
+```{r}
+sd_question(
+  type  = 'slider',
+  id    = 'regression',
+  label = "Regression and Causal Inference",
+  option = c(
+    '1' = '1',
+    '2' = '2',
+    '3' = '3',
+    '4' = '4',
+    '5' = '5',
+    '6' = '6',
+    '7' = '7',
+    '8' = '8',
+    '9' = '9',
+    '10' = '10'
+  )
+)
+```
+
+```{r}
+sd_question(
+  type  = 'slider',
+  id    = 'bayes',
+  label = "Bayesian Inference",
+  option = c(
+    '1' = '1',
+    '2' = '2',
+    '3' = '3',
+    '4' = '4',
+    '5' = '5',
+    '6' = '6',
+    '7' = '7',
+    '8' = '8',
+    '9' = '9',
+    '10' = '10'
+  )
+)
+```
+
+```{r}
+sd_question(
+  type  = 'slider',
+  id    = 'freq',
+  label = "P-Values and Confidence Intervals",
+  option = c(
+    '1' = '1',
+    '2' = '2',
+    '3' = '3',
+    '4' = '4',
+    '5' = '5',
+    '6' = '6',
+    '7' = '7',
+    '8' = '8',
+    '9' = '9',
+    '10' = '10'
+  )
+)
+```
+
+```{r}
+sd_question(
+  type  = 'slider',
+  id    = 'freq',
+  label = "Programming Languages (i.e. R, Python, C++, etc.)",
+  option = c(
+    '1' = '1',
+    '2' = '2',
+    '3' = '3',
+    '4' = '4',
+    '5' = '5',
+    '6' = '6',
+    '7' = '7',
+    '8' = '8',
+    '9' = '9',
+    '10' = '10'
+  )
+)
+```
+
+```{r}
+sd_next()
+```
+:::
+
+:::{#page4 .sd-page}
+```{r}
+sd_question(
+  type  = 'textarea',
+  id    = 'open',
+  label = "Why are you taking this course? What do you expect to gain from this course? How can I best help you and your future research?"
+)
+```
+
+```{r}
+sd_next()
+```
+
+:::
+
+::: {#end .sd-page}
+Thank you for completing this survey!\
+I am excited for next semester!\
+Please reach out to me at wolfec23@ecu.edu should you have any concerns about the semester. 
+
+```{r}
+sd_close(label = 'Close window')
+```
+:::
