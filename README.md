@@ -6,6 +6,7 @@ This activity is meant to introduce students to Bayesian data analysis following
   -  Instructor documents can be found [here](https://github.com/bayes-bats/tier2-anthro/blob/main/Classroom_Resources/BayesActivity/Instructor_File.qmd).
   -  Student documents can be found [here](https://github.com/bayes-bats/tier2-anthro/blob/main/Classroom_Resources/BayesActivity/Student_File.qmd).
   -  Lecture material forthcoming
+  -  Bayes BATS Presentation can be found [here](https://ecu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c7d6204a-9ea6-4e49-a2da-b24300fde86d)
 
 This activity was created by Christopher Wolfe as part of the [Bayes BATS](https://www.stat.uci.edu/bayes-bats/) program, with mentorship and advising from Mine Dogucu.
 
